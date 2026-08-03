@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="hospital_patient_adams" model="hospital.patient">
+        <field name="name">John Adams</field>
+        <field name="birth_date">1985-04-12</field>
+        <field name="attending_doctor_id" ref="hospital_doctor_house"/>
+        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_influenza'))]"/>
+    </record>
+    <record id="hospital_patient_brown" model="hospital.patient">
+        <field name="name">Emily Brown</field>
+        <field name="birth_date">1992-09-03</field>
+        <field name="attending_doctor_id" ref="hospital_doctor_wilson"/>
+        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_hypertension'))]"/>
+    </record>
+    <record id="hospital_patient_clark" model="hospital.patient">
+        <field name="name">Michael Clark</field>
+        <field name="birth_date">1978-01-27</field>
+        <field name="attending_doctor_id" ref="hospital_doctor_cuddy"/>
+        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_diabetes'))]"/>
+    </record>
+</odoo>
