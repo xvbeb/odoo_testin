@@ -1,0 +1,19 @@
+<odoo noupdate="1">
+    <record id="hospital_doctor_house" model="hospital.doctor">
+        <field name="name">Gregory House</field>
+        <field name="specialization">Diagnostic medicine</field>
+        <field name="email">g.house@example.com</field>
+    </record>
+    <record id="hospital_doctor_wilson" model="hospital.doctor">
+        <field name="name">James Wilson</field>
+        <field name="specialization">Oncology</field>
+        <field name="email">j.wilson@example.com</field>
+        <field name="supervising_doctor_id" ref="hospital_doctor_house"/>
+    </record>
+    <record id="hospital_doctor_cuddy" model="hospital.doctor">
+        <field name="name">Lisa Cuddy</field>
+        <field name="specialization">Endocrinology</field>
+        <field name="email">l.cuddy@example.com</field>
+        <field name="supervising_doctor_id" ref="hospital_doctor_house"/>
+    </record>
+</odoo>

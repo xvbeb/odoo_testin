@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+    <record id="hospital_disease_influenza" model="hospital.disease">
+        <field name="name">Influenza</field>
+        <field name="description">Acute viral respiratory infection.</field>
+    </record>
+    <record id="hospital_disease_hypertension" model="hospital.disease">
+        <field name="name">Hypertension</field>
+        <field name="description">Persistently elevated blood pressure.</field>
+    </record>
+    <record id="hospital_disease_diabetes" model="hospital.disease">
+        <field name="name">Diabetes mellitus</field>
+        <field name="description">Metabolic disorder affecting blood glucose.</field>
+    </record>
+</odoo>
