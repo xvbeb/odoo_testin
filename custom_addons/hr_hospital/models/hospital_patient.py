@@ -5,7 +5,6 @@ class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = "Пацієнт"
     _order = "name"
-
     name = fields.Char(required=True)
     birth_date = fields.Date()
     phone = fields.Char()

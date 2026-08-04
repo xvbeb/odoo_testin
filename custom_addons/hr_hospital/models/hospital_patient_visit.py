@@ -5,7 +5,6 @@ class HospitalPatientVisit(models.Model):
     _name = "hospital.patient.visit"
     _description = "Відвідування пацієнта"
     _order = "visit_datetime desc, id desc"
-
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
         required=True,

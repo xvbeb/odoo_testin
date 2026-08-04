@@ -5,7 +5,6 @@ class HospitalDoctor(models.Model):
     _name = "hospital.doctor"
     _description = "Лікар"
     _order = "name"
-
     name = fields.Char(required=True)
     specialization = fields.Char()
     phone = fields.Char()
