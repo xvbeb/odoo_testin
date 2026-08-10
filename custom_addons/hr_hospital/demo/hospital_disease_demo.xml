@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Five hierarchical demo diseases. -->
+    <record id="hospital_disease_respiratory" model="hospital.disease">
+        <field name="name">Захворювання дихальної системи</field>
+        <field name="description">Демонстраційна батьківська категорія.</field>
+    </record>
+    <record id="hospital_disease_viral_respiratory" model="hospital.disease">
+        <field name="name">Вірусні респіраторні інфекції</field>
+        <field name="parent_id" ref="hospital_disease_respiratory"/>
+    </record>
+    <record id="hospital_disease_covid" model="hospital.disease">
+        <field name="name">COVID-19</field>
+        <field name="parent_id" ref="hospital_disease_viral_respiratory"/>
+    </record>
+    <record id="hospital_disease_cardiovascular" model="hospital.disease">
+        <field name="name">Серцево-судинні захворювання</field>
+    </record>
+    <record id="hospital_disease_arrhythmia" model="hospital.disease">
+        <field name="name">Аритмія</field>
+        <field name="parent_id" ref="hospital_disease_cardiovascular"/>
+    </record>
+</odoo>

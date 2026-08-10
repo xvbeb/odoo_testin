@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Planned, completed, and cancelled demo visits. -->
+    <record id="hospital_visit_1" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_ivan"/>
+        <field name="doctor_id" ref="hospital_doctor_olena"/>
+        <field name="disease_id" ref="hospital_disease_hypertension"/>
+        <field name="scheduled_datetime">2026-06-03 09:00:00</field>
+        <field name="actual_datetime">2026-06-03 09:08:00</field>
+        <field name="state">done</field>
+        <field name="summary" type="html"><p>Контроль тиску, стан стабільний.</p></field>
+    </record>
+    <record id="hospital_visit_2" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_anna"/>
+        <field name="doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="disease_id" ref="hospital_disease_influenza"/>
+        <field name="scheduled_datetime">2026-06-10 12:30:00</field>
+        <field name="actual_datetime">2026-06-10 12:35:00</field>
+        <field name="state">done</field>
+        <field name="summary" type="html"><p>Призначено симптоматичне лікування.</p></field>
+    </record>
+    <record id="hospital_visit_3" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_oleh"/>
+        <field name="doctor_id" ref="hospital_doctor_olena"/>
+        <field name="disease_id" ref="hospital_disease_diabetes"/>
+        <field name="scheduled_datetime">2026-08-12 10:00:00</field>
+        <field name="state">planned</field>
+    </record>
+    <record id="hospital_visit_4" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_ivan"/>
+        <field name="doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="disease_id" ref="hospital_disease_arrhythmia"/>
+        <field name="scheduled_datetime">2026-08-14 14:00:00</field>
+        <field name="state">planned</field>
+    </record>
+    <record id="hospital_visit_5" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_anna"/>
+        <field name="doctor_id" ref="hospital_doctor_olena"/>
+        <field name="disease_id" ref="hospital_disease_covid"/>
+        <field name="scheduled_datetime">2026-07-25 11:15:00</field>
+        <field name="state">cancelled</field>
+    </record>
+    <record id="hospital_visit_6" model="hospital.patient.visit">
+        <field name="patient_id" ref="hospital_patient_oleh"/>
+        <field name="doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="disease_id" ref="hospital_disease_diabetes"/>
+        <field name="scheduled_datetime">2026-05-18 16:00:00</field>
+        <field name="actual_datetime">2026-05-18 16:02:00</field>
+        <field name="state">done</field>
+        <field name="summary" type="html"><p>Оновлено рекомендації щодо харчування.</p></field>
+    </record>
+</odoo>

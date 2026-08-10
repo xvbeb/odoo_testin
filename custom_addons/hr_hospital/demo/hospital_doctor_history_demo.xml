@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Personal doctor assignment history. -->
+    <record id="hospital_doctor_history_ivan_old" model="hospital.doctor.history">
+        <field name="patient_id" ref="hospital_patient_ivan"/>
+        <field name="doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="assignment_date">2025-01-10</field>
+        <field name="change_date">2026-01-15</field>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="hospital_doctor_history_ivan_current" model="hospital.doctor.history">
+        <field name="patient_id" ref="hospital_patient_ivan"/>
+        <field name="doctor_id" ref="hospital_doctor_olena"/>
+        <field name="assignment_date">2026-01-15</field>
+    </record>
+    <record id="hospital_doctor_history_anna" model="hospital.doctor.history">
+        <field name="patient_id" ref="hospital_patient_anna"/>
+        <field name="doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="assignment_date">2025-08-20</field>
+    </record>
+    <record id="hospital_doctor_history_oleh" model="hospital.doctor.history">
+        <field name="patient_id" ref="hospital_patient_oleh"/>
+        <field name="doctor_id" ref="hospital_doctor_olena"/>
+        <field name="assignment_date">2026-02-01</field>
+    </record>
+</odoo>

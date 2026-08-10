@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="0">
-    <record id="hospital_patient_adams" model="hospital.patient">
-        <field name="name">Олексій</field>
-        <field name="birth_date">1985-04-12</field>
-        <field name="attending_doctor_id" ref="hospital_doctor_house"/>
-        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_influenza'))]"/>
+<odoo>
+    <!-- Demo patients with medical information. -->
+    <record id="hospital_patient_ivan" model="hospital.patient">
+        <field name="name">Шевченко Іван Петрович</field>
+        <field name="personal_doctor_id" ref="hospital_doctor_olena"/>
+        <field name="insurance_policy">POL-000000000001</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1975-06-18</field>
+        <field name="blood_group">b_positive</field>
+        <field name="phone">+380671110201</field>
+        <field name="disease_ids" eval="[(6, 0, [ref('hospital_disease_hypertension')])]"/>
     </record>
-    <record id="hospital_patient_brown" model="hospital.patient">
-        <field name="name">Emily Brown</field>
-        <field name="birth_date">1992-09-03</field>
-        <field name="attending_doctor_id" ref="hospital_doctor_wilson"/>
-        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_hypertension'))]"/>
+    <record id="hospital_patient_anna" model="hospital.patient">
+        <field name="name">Петренко Анна Вікторівна</field>
+        <field name="personal_doctor_id" ref="hospital_doctor_andrii"/>
+        <field name="insurance_policy">POL-000000000002</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1992-11-07</field>
+        <field name="blood_group">a_negative</field>
+        <field name="phone">+380671110202</field>
+        <field name="disease_ids" eval="[(6, 0, [ref('hospital_disease_influenza')])]"/>
     </record>
-    <record id="hospital_patient_clark" model="hospital.patient">
-        <field name="name">Michael Clark</field>
-        <field name="birth_date">1978-01-27</field>
-        <field name="attending_doctor_id" ref="hospital_doctor_cuddy"/>
-        <field name="disease_ids" eval="[Command.link(ref('hr_hospital.hospital_disease_diabetes'))]"/>
+    <record id="hospital_patient_oleh" model="hospital.patient">
+        <field name="name">Савчук Олег Миколайович</field>
+        <field name="personal_doctor_id" ref="hospital_doctor_olena"/>
+        <field name="insurance_policy">POL-000000000003</field>
+        <field name="gender">male</field>
+        <field name="birth_date">2004-02-29</field>
+        <field name="blood_group">o_negative</field>
+        <field name="phone">+380671110203</field>
+        <field name="disease_ids" eval="[(6, 0, [ref('hospital_disease_diabetes')])]"/>
     </record>
 </odoo>

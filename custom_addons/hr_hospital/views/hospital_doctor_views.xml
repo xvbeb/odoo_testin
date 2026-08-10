@@ -1,19 +1,21 @@
 <odoo>
     <record id="hospital_doctor_view_list" model="ir.ui.view">
-        <field name="name">hospital.doctor.list</field>
+        <field name="name">hospital_doctor_list</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-info="is_intern" decoration-muted="not active">
                 <field name="name"/>
+                <field name="category_id"/>
                 <field name="specialization"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="supervising_doctor_id"/>
+                <field name="is_intern"/>
+                <field name="mentor_id" optional="show"/>
+                <field name="user_id" optional="hide"/>
+                <field name="phone" optional="hide"/>
             </list>
         </field>
     </record>
     <record id="hospital_doctor_view_form" model="ir.ui.view">
-        <field name="name">hospital.doctor.form</field>
+        <field name="name">hospital_doctor_form</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
             <form>
@@ -22,19 +24,29 @@
                         <group>
                             <field name="name"/>
                             <field name="specialization"/>
-                            <field name="supervising_doctor_id" domain="[('id', '!=', id)]"/>
+                            <field name="category_id"/>
+                            <field name="is_intern" readonly="1"/>
+                            <field name="mentor_id"
+                                   invisible="not is_intern"
+                                   required="is_intern"
+                                   domain="[('is_intern', '=', False), ('id', '!=', id)]"/>
+                            <field name="user_id"/>
                         </group>
                         <group>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age" readonly="1"/>
+                            <field name="blood_group"/>
                             <field name="phone" widget="phone"/>
                             <field name="email" widget="email"/>
                             <field name="active"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="Patients">
+                        <page string="Пацієнти">
                             <field name="patient_ids" readonly="1"/>
                         </page>
-                        <page string="Visits">
+                        <page string="Візити">
                             <field name="visit_ids" readonly="1"/>
                         </page>
                     </notebook>
@@ -43,7 +55,7 @@
         </field>
     </record>
     <record id="hospital_doctor_action" model="ir.actions.act_window">
-        <field name="name">Doctors</field>
+        <field name="name">Лікарі</field>
         <field name="res_model">hospital.doctor</field>
         <field name="view_mode">list,form</field>
     </record>

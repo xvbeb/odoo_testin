@@ -1,19 +1,35 @@
-<odoo noupdate="1">
-    <record id="hospital_doctor_house" model="hospital.doctor">
-        <field name="name">Gregory House</field>
-        <field name="specialization">Diagnostic medicine</field>
-        <field name="email">g.house@example.com</field>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Demo doctors include an intern with a mentor. -->
+    <record id="hospital_doctor_olena" model="hospital.doctor">
+        <field name="name">Коваль Олена Сергіївна</field>
+        <field name="specialization">Кардіологія</field>
+        <field name="category_id" ref="doctor_category_highest"/>
+        <field name="gender">female</field>
+        <field name="birth_date">1980-04-12</field>
+        <field name="blood_group">a_positive</field>
+        <field name="phone">+380501110101</field>
+        <field name="email">o.koval@hospital.example</field>
     </record>
-    <record id="hospital_doctor_wilson" model="hospital.doctor">
-        <field name="name">James Wilson</field>
-        <field name="specialization">Oncology</field>
-        <field name="email">j.wilson@example.com</field>
-        <field name="supervising_doctor_id" ref="hospital_doctor_house"/>
+    <record id="hospital_doctor_andrii" model="hospital.doctor">
+        <field name="name">Мельник Андрій Ігорович</field>
+        <field name="specialization">Терапія</field>
+        <field name="category_id" ref="doctor_category_specialist"/>
+        <field name="gender">male</field>
+        <field name="birth_date">1987-09-03</field>
+        <field name="blood_group">o_positive</field>
+        <field name="phone">+380501110102</field>
+        <field name="email">a.melnyk@hospital.example</field>
     </record>
-    <record id="hospital_doctor_cuddy" model="hospital.doctor">
-        <field name="name">Lisa Cuddy</field>
-        <field name="specialization">Endocrinology</field>
-        <field name="email">l.cuddy@example.com</field>
-        <field name="supervising_doctor_id" ref="hospital_doctor_house"/>
+    <record id="hospital_doctor_maria" model="hospital.doctor">
+        <field name="name">Бондар Марія Олегівна</field>
+        <field name="specialization">Сімейна медицина</field>
+        <field name="category_id" ref="doctor_category_intern"/>
+        <field name="mentor_id" ref="hospital_doctor_olena"/>
+        <field name="gender">female</field>
+        <field name="birth_date">2001-01-25</field>
+        <field name="blood_group">ab_negative</field>
+        <field name="phone">+380501110103</field>
+        <field name="email">m.bondar@hospital.example</field>
     </record>
 </odoo>

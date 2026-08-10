@@ -1,19 +1,20 @@
 <odoo>
     <record id="hospital_patient_view_list" model="ir.ui.view">
-        <field name="name">hospital.patient.list</field>
+        <field name="name">hospital_patient_list</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-muted="not active">
                 <field name="name"/>
                 <field name="birth_date"/>
-                <field name="phone"/>
-                <field name="attending_doctor_id"/>
-                <field name="disease_ids" widget="many2many_tags"/>
+                <field name="age"/>
+                <field name="personal_doctor_id"/>
+                <field name="insurance_policy" optional="show"/>
+                <field name="disease_ids" widget="many2many_tags" optional="hide"/>
             </list>
         </field>
     </record>
     <record id="hospital_patient_view_form" model="ir.ui.view">
-        <field name="name">hospital.patient.form</field>
+        <field name="name">hospital_patient_form</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
@@ -21,22 +22,36 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="birth_date"/>
-                            <field name="attending_doctor_id"/>
+                            <field name="personal_doctor_id" domain="[('is_intern', '=', False)]"/>
+                            <field name="insurance_policy"/>
                             <field name="disease_ids" widget="many2many_tags"/>
                         </group>
                         <group>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age" readonly="1"/>
+                            <field name="blood_group"/>
                             <field name="phone" widget="phone"/>
                             <field name="email" widget="email"/>
                             <field name="active"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="Visits">
+                        <page string="Історія лікарів">
+                            <field name="doctor_history_ids">
+                                <list editable="bottom">
+                                    <field name="doctor_id"/>
+                                    <field name="assignment_date"/>
+                                    <field name="change_date"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Візити">
                             <field name="visit_ids"/>
                         </page>
-                        <page string="Notes">
-                            <field name="notes" placeholder="Additional patient information..."/>
+                        <page string="Нотатки">
+                            <field name="notes"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -44,7 +59,7 @@
         </field>
     </record>
     <record id="hospital_patient_action" model="ir.actions.act_window">
-        <field name="name">Patients</field>
+        <field name="name">Пацієнти</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">list,form</field>
     </record>

@@ -1,31 +1,20 @@
 <odoo>
-    <menuitem id="hr_hospital_menu_root" name="Hospital" sequence="20"/>
-    <menuitem
-        id="hr_hospital_menu_patients"
-        name="Patients"
-        parent="hr_hospital_menu_root"
-        action="hospital_patient_action"
-        sequence="10"
-    />
-    <menuitem
-        id="hr_hospital_menu_doctors"
-        name="Doctors"
-        parent="hr_hospital_menu_root"
-        action="hospital_doctor_action"
-        sequence="20"
-    />
-    <menuitem
-        id="hr_hospital_menu_visits"
-        name="Visits"
-        parent="hr_hospital_menu_root"
-        action="hospital_patient_visit_action"
-        sequence="30"
-    />
-    <menuitem
-        id="hr_hospital_menu_diseases"
-        name="Diseases"
-        parent="hr_hospital_menu_root"
-        action="hospital_disease_action"
-        sequence="40"
-    />
+    <menuitem id="hospital_menu_root" name="Hospital" sequence="10"/>
+    <menuitem id="hospital_patient_menu" name="Пацієнти"
+              parent="hospital_menu_root" action="hospital_patient_action" sequence="10"/>
+    <menuitem id="hospital_doctor_menu" name="Лікарі"
+              parent="hospital_menu_root" action="hospital_doctor_action" sequence="20"/>
+    <menuitem id="hospital_visit_menu" name="Візити"
+              parent="hospital_menu_root" action="hospital_patient_visit_action" sequence="30"/>
+    <menuitem id="hospital_configuration_menu" name="Налаштування"
+              parent="hospital_menu_root" sequence="90"/>
+    <menuitem id="hospital_doctor_category_menu" name="Кваліфікації лікарів"
+              parent="hospital_configuration_menu" action="hospital_doctor_category_action"
+              sequence="10"/>
+    <menuitem id="hospital_disease_menu" name="Хвороби"
+              parent="hospital_configuration_menu" action="hospital_disease_action"
+              sequence="20"/>
+    <menuitem id="hospital_doctor_history_menu" name="Історія лікарів"
+              parent="hospital_configuration_menu" action="hospital_doctor_history_action"
+              sequence="30"/>
 </odoo>

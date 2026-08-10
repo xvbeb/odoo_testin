@@ -1,43 +1,65 @@
 <odoo>
     <record id="hospital_patient_visit_view_list" model="ir.ui.view">
-        <field name="name">hospital.patient.visit.list</field>
+        <field name="name">hospital_patient_visit_list</field>
         <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="visit_datetime"/>
+            <list decoration-success="state == 'done'"
+                  decoration-danger="state == 'cancelled'"
+                  decoration-muted="not active">
+                <field name="scheduled_datetime"/>
+                <field name="actual_datetime" optional="show"/>
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
-                <field name="disease_id"/>
+                <field name="disease_id" optional="show"/>
+                <field name="state" widget="badge"/>
             </list>
         </field>
     </record>
+
     <record id="hospital_patient_visit_view_form" model="ir.ui.view">
-        <field name="name">hospital.patient.visit.form</field>
+        <field name="name">hospital_patient_visit_form</field>
         <field name="model">hospital.patient.visit</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           options="{'clickable': true}" readonly="state == 'done'"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="patient_id"/>
-                            <field name="doctor_id"/>
-                        </group>
-                        <group>
-                            <field name="visit_datetime"/>
+                            <field name="doctor_id" readonly="state == 'done'"/>
                             <field name="disease_id"/>
                         </group>
+                        <group>
+                            <field name="scheduled_datetime" readonly="state == 'done'"/>
+                            <field name="actual_datetime" readonly="state == 'done'"/>
+                            <field name="active" readonly="state == 'done'"/>
+                        </group>
                     </group>
-                    <group>
-                        <field name="diagnosis"/>
-                        <field name="recommendations"/>
-                    </group>
+                    <field name="summary" placeholder="Епікриз та результати візиту..."/>
                 </sheet>
             </form>
         </field>
     </record>
+
+    <record id="hospital_patient_visit_view_calendar" model="ir.ui.view">
+        <field name="name">hospital_patient_visit_calendar</field>
+        <field name="model">hospital.patient.visit</field>
+        <field name="arch" type="xml">
+            <calendar string="Календар візитів" date_start="scheduled_datetime"
+                      color="doctor_id" mode="week">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
     <record id="hospital_patient_visit_action" model="ir.actions.act_window">
-        <field name="name">Patient Visits</field>
+        <field name="name">Візити</field>
         <field name="res_model">hospital.patient.visit</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">list,calendar,form</field>
     </record>
 </odoo>
