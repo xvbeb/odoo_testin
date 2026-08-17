@@ -1,11 +1,11 @@
 {
     "name": "Hospital",
-    "summary": "Розширене управління лікарнею, лікарями та пацієнтами",
-    "version": "19.0.2.0.4",
+    "summary": "Управління лікарнею та аналітика візитів",
+    "version": "19.0.5.0.0",
     "category": "Human Resources",
     "author": "xvbeb",
     "license": "AGPL-3",
-    "depends": ["base"],
+    "depends": ["base", "web"],
     "images": ["static/description/icon.png"],
     "data": [
         "security/ir.model.access.csv",
@@ -19,6 +19,8 @@
         "views/hospital_patient_visit_views.xml",
         "wizard/mass_reassign_doctor_wizard_views.xml",
         "wizard/visit_report_wizard_views.xml",
+        "wizard/disease_month_report_wizard_views.xml",
+        "report/hospital_doctor_report.xml",
         "views/hr_hospital_menus.xml",
     ],
     "demo": [

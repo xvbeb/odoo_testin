@@ -26,7 +26,7 @@ class HospitalDisease(models.Model):
         string="Дочірні хвороби",
     )
     display_name = fields.Char(compute="_compute_display_name", recursive=True)
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(string="Активний", default=True)
 
     _name_unique = models.Constraint(
         "UNIQUE(name)",

@@ -1,3 +1,6 @@
+# Порядок імпорту важливий: абстрактна модель завантажується першою.
+# ruff: noqa: I001
+
 from . import (
     hospital_medic_info,
     hospital_disease,

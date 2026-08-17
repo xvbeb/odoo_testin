@@ -1,10 +1,24 @@
 <odoo>
+    <record id="hospital_patient_view_search" model="ir.ui.view">
+        <field name="name">hospital_patient_search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Пошук пацієнтів">
+                <field name="name" string="ПІБ або телефон"
+                       filter_domain="['|', ('name', 'ilike', self), ('phone', 'ilike', self)]"/>
+                <field name="phone" string="Телефон"/>
+                <field name="personal_doctor_id" string="Персональний лікар"/>
+            </search>
+        </field>
+    </record>
+
     <record id="hospital_patient_view_list" model="ir.ui.view">
         <field name="name">hospital_patient_list</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <list decoration-muted="not active">
                 <field name="name"/>
+                <field name="phone"/>
                 <field name="birth_date"/>
                 <field name="age"/>
                 <field name="personal_doctor_id"/>
@@ -13,12 +27,24 @@
             </list>
         </field>
     </record>
+
     <record id="hospital_patient_view_form" model="ir.ui.view">
         <field name="name">hospital_patient_form</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Пацієнт">
+                <header>
+                    <button name="action_create_visit" type="object"
+                            string="Створити візит" class="btn-primary"
+                            invisible="not id or not personal_doctor_id"/>
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_visits" type="object"
+                                class="oe_stat_button" icon="fa-calendar-check-o">
+                            <field name="visit_count" widget="statinfo" string="Історія візитів"/>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
@@ -48,19 +74,19 @@
                             </field>
                         </page>
                         <page string="Візити">
-                            <field name="visit_ids"/>
+                            <field name="visit_ids" readonly="1"/>
                         </page>
-                        <page string="Нотатки">
-                            <field name="notes"/>
-                        </page>
+                        <page string="Нотатки"><field name="notes"/></page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
+
     <record id="hospital_patient_action" model="ir.actions.act_window">
         <field name="name">Пацієнти</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="hospital_patient_view_search"/>
     </record>
 </odoo>

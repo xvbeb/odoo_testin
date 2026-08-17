@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Five hierarchical demo diseases. -->
+    <!-- П'ять ієрархічних демо-захворювань. -->
     <record id="hospital_disease_respiratory" model="hospital.disease">
         <field name="name">Захворювання дихальної системи</field>
         <field name="description">Демонстраційна батьківська категорія.</field>

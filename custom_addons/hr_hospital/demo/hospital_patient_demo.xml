@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Demo patients with medical information. -->
+    <!-- Демо-пацієнти з медичною інформацією. -->
     <record id="hospital_patient_ivan" model="hospital.patient">
         <field name="name">Шевченко Іван Петрович</field>
         <field name="personal_doctor_id" ref="hospital_doctor_olena"/>

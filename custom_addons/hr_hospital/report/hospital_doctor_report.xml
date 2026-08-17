@@ -1,0 +1,48 @@
+<odoo>
+    <record id="hospital_doctor_report_action" model="ir.actions.report">
+        <field name="name">Картка лікаря</field>
+        <field name="model">hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.hospital_doctor_report</field>
+        <field name="report_file">hr_hospital.hospital_doctor_report</field>
+        <field name="binding_model_id" ref="model_hospital_doctor"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Лікар - %s' % (object.name)</field>
+    </record>
+
+    <template id="hospital_doctor_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doctor">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center mb-4">
+                            <h1>Картка лікаря</h1>
+                            <h2 t-field="doctor.name"/>
+                            <h4>
+                                Спеціальність:
+                                <span t-field="doctor.specialization"/>
+                            </h4>
+                        </div>
+
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th>Кваліфікація</th>
+                                    <td><span t-field="doctor.category_id"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Телефон</th>
+                                    <td><span t-field="doctor.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Електронна пошта</th>
+                                    <td><span t-field="doctor.email"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

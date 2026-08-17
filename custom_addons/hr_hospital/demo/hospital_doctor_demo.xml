@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Demo doctors include an intern with a mentor. -->
+    <!-- Демо-лікарі, зокрема інтерни з менторами. -->
     <record id="hospital_doctor_olena" model="hospital.doctor">
         <field name="name">Коваль Олена Сергіївна</field>
         <field name="specialization">Кардіологія</field>
@@ -31,5 +30,27 @@
         <field name="blood_group">ab_negative</field>
         <field name="phone">+380501110103</field>
         <field name="email">m.bondar@hospital.example</field>
+    </record>
+    <record id="hospital_doctor_nazar" model="hospital.doctor">
+        <field name="name">Романюк Назар Васильович</field>
+        <field name="specialization">Кардіологія</field>
+        <field name="category_id" ref="doctor_category_intern"/>
+        <field name="mentor_id" ref="hospital_doctor_olena"/>
+        <field name="gender">male</field>
+        <field name="birth_date">2000-05-14</field>
+        <field name="blood_group">b_negative</field>
+        <field name="phone">+380501110104</field>
+        <field name="email">n.romaniuk@hospital.example</field>
+    </record>
+    <record id="hospital_doctor_sofiia" model="hospital.doctor">
+        <field name="name">Ткаченко Софія Романівна</field>
+        <field name="specialization">Терапія</field>
+        <field name="category_id" ref="doctor_category_intern"/>
+        <field name="mentor_id" ref="hospital_doctor_andrii"/>
+        <field name="gender">female</field>
+        <field name="birth_date">1999-12-02</field>
+        <field name="blood_group">o_positive</field>
+        <field name="phone">+380501110105</field>
+        <field name="email">s.tkachenko@hospital.example</field>
     </record>
 </odoo>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Personal doctor assignment history. -->
+    <!-- Історія призначення персональних лікарів. -->
     <record id="hospital_doctor_history_ivan_old" model="hospital.doctor.history">
         <field name="patient_id" ref="hospital_patient_ivan"/>
         <field name="doctor_id" ref="hospital_doctor_andrii"/>

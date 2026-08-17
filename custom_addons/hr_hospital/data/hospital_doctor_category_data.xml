@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
-    <!-- Master doctor qualifications. -->
+    <!-- Основні кваліфікації лікарів. -->
     <record id="doctor_category_intern" model="hospital.doctor.category">
         <field name="name">Лікар-інтерн</field>
         <field name="sequence">10</field>
