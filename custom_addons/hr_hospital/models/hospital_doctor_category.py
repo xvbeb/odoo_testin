@@ -15,8 +15,13 @@ class HospitalDoctorCategory(models.Model):
         inverse_name="category_id",
         string="Лікарі",
     )
+    is_intern = fields.Boolean(
+        string="Категорія інтернів",
+        default=False,
+    )
 
     _name_unique = models.Constraint(
         "UNIQUE(name)",
         "Кваліфікація лікаря з такою назвою вже існує.",
     )
+

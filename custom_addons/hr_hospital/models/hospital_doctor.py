@@ -26,7 +26,7 @@ class HospitalDoctor(models.Model):
     )
     is_intern = fields.Boolean(
         string="Лікар є інтерном",
-        compute="_compute_is_intern",
+        related="category_id.is_intern",
         store=True,
     )
     mentor_id = fields.Many2one(
@@ -65,16 +65,6 @@ class HospitalDoctor(models.Model):
     )
     active = fields.Boolean(string="Активний", default=True)
 
-    @api.depends("category_id")
-    def _compute_is_intern(self):
-        intern_category = self.env.ref(
-            "hr_hospital.doctor_category_intern",
-            raise_if_not_found=False,
-        )
-        for doctor in self:
-            doctor.is_intern = bool(
-                intern_category and doctor.category_id == intern_category
-            )
 
     @api.constrains("mentor_id")
     def _check_mentor_is_not_intern(self):

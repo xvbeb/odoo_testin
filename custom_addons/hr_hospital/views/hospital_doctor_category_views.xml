@@ -19,6 +19,7 @@
                     <group>
                         <field name="name"/>
                         <field name="sequence"/>
+                        <field name="is_intern"/>
                     </group>
                     <field name="doctor_ids" readonly="1">
                         <list>

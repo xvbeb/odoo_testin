@@ -1,7 +1,7 @@
 {
     "name": "Hospital",
     "summary": "Управління лікарнею та аналітика візитів",
-    "version": "19.0.5.0.0",
+    "version": "19.0.5.0.1",
     "category": "Human Resources",
     "author": "xvbeb",
     "license": "AGPL-3",
