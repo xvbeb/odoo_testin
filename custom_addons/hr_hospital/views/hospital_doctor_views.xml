@@ -39,17 +39,32 @@
                 <field name="category_id"/>
                 <field name="is_intern"/>
                 <field name="mentor_id"/>
+                <field name="intern_ids"/>
                 <field name="phone"/>
                 <templates>
+                    <t t-name="menu">
+                        <a role="menuitem" type="open" class="dropdown-item"
+                           t-if="widget.editable">Редагувати</a>
+                        <a role="menuitem" type="delete" class="dropdown-item"
+                           t-if="widget.deletable">Видалити</a>
+                    </t>
                     <t t-name="card">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <strong class="fs-5"><field name="name"/></strong>
                             <span t-if="record.is_intern.raw_value"
                                   class="badge text-bg-info">Інтерн</span>
                         </div>
+                        <div class="mb-1">
+                            <span class="text-muted">Кваліфікація:</span>
+                            <field name="category_id"/>
+                        </div>
                         <div class="text-muted mb-1"><field name="specialization"/></div>
                         <div t-if="record.mentor_id.raw_value" class="mb-1">
                             Ментор: <field name="mentor_id"/>
+                        </div>
+                        <div t-if="record.intern_ids.raw_value.length" class="mb-2">
+                            <span class="text-muted">Інтерни:</span>
+                            <field name="intern_ids" widget="many2many_tags"/>
                         </div>
                         <div class="mb-3"><field name="phone"/></div>
                         <button name="action_schedule_visit" type="object"

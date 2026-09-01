@@ -4,12 +4,12 @@
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">35</field>
+        <field name="margin_top">45</field>
         <field name="margin_bottom">25</field>
         <field name="margin_left">12</field>
         <field name="margin_right">12</field>
         <field name="header_line" eval="False"/>
-        <field name="header_spacing">25</field>
+        <field name="header_spacing">35</field>
         <field name="dpi">90</field>
     </record>
 
@@ -28,7 +28,8 @@
     <template id="hospital_doctor_report_layout">
         <t t-set="company" t-value="res_company"/>
 
-        <div class="header" style="border-bottom: 1px solid #999; padding-bottom: 8px;">
+        <div class="header"
+             style="border-bottom: 1px solid #999; padding-bottom: 8px; font-family: 'DejaVu Sans', Arial, sans-serif;">
             <table style="width: 100%; border: 0;">
                 <tr>
                     <td style="width: 35%; vertical-align: top;">
@@ -52,6 +53,7 @@
         </div>
 
         <div class="article"
+             style="font-family: 'DejaVu Sans', Arial, sans-serif;"
              t-att-data-oe-model="o and o._name"
              t-att-data-oe-id="o and o.id"
              t-att-data-oe-lang="o and o.env.context.get('lang')">
@@ -59,7 +61,7 @@
         </div>
 
         <div class="footer"
-             style="border-top: 1px solid #999; padding-top: 4px; font-size: 9px; color: #555;">
+             style="border-top: 1px solid #999; padding-top: 4px; font-size: 9px; color: #555; font-family: 'DejaVu Sans', Arial, sans-serif;">
             <table style="width: 100%; border: 0;">
                 <tr>
                     <td style="width: 45%; text-align: left;">
