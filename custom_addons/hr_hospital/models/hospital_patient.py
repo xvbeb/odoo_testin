@@ -12,6 +12,11 @@ class HospitalPatient(models.Model):
     name = fields.Char(string="ПІБ", required=True)
     phone = fields.Char(string="Телефон")
     email = fields.Char(string="Електронна пошта")
+    user_id = fields.Many2one(
+        comodel_name="res.users",
+        string="Користувач системи",
+        ondelete="set null",
+    )
     personal_doctor_id = fields.Many2one(
         comodel_name="hospital.doctor",
         string="Персональний лікар",

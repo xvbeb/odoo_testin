@@ -1,13 +1,14 @@
 {
     "name": "Hospital",
     "summary": "Управління лікарнею та аналітика візитів",
-    "version": "19.0.5.0.1",
+    "version": "19.0.6.1.0",
     "category": "Human Resources",
     "author": "xvbeb",
     "license": "AGPL-3",
     "depends": ["base", "web"],
     "images": ["static/description/icon.png"],
     "data": [
+        "security/hr_hospital_security.xml",
         "security/ir.model.access.csv",
         "data/hospital_doctor_category_data.xml",
         "data/hospital_disease_data.xml",

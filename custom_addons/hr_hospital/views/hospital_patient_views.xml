@@ -48,6 +48,8 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="user_id"
+                                   groups="hr_hospital.group_hospital_administrator"/>
                             <field name="personal_doctor_id" domain="[('is_intern', '=', False)]"/>
                             <field name="insurance_policy"/>
                             <field name="disease_ids" widget="many2many_tags"/>

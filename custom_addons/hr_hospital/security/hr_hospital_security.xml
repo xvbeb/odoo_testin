@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_groups_privilege_hospital" model="res.groups.privilege">
+        <field name="name">Лікарня</field>
+        <field name="sequence">20</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+
+    <record id="group_hospital_patient" model="res.groups">
+        <field name="name">Пацієнт</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Базовий рівень доступу пацієнта лікарні.</field>
+    </record>
+
+    <record id="group_hospital_intern" model="res.groups">
+        <field name="name">Інтерн</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_patient'))]"/>
+        <field name="comment">Рівень доступу інтерна; включає права пацієнта.</field>
+    </record>
+
+    <record id="group_hospital_doctor" model="res.groups">
+        <field name="name">Лікар</field>
+        <field name="sequence">30</field>
+        <field name="privilege_id" ref="res_groups_privilege_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_intern'))]"/>
+        <field name="comment">Рівень доступу лікаря; включає права інтерна.</field>
+    </record>
+
+    <record id="group_hospital_manager" model="res.groups">
+        <field name="name">Менеджер</field>
+        <field name="sequence">40</field>
+        <field name="privilege_id" ref="res_groups_privilege_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_doctor'))]"/>
+        <field name="comment">Рівень доступу менеджера; включає права лікаря.</field>
+    </record>
+
+    <record id="group_hospital_administrator" model="res.groups">
+        <field name="name">Адміністратор</field>
+        <field name="sequence">50</field>
+        <field name="privilege_id" ref="res_groups_privilege_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_manager'))]"/>
+        <field name="comment">Найвищий рівень доступу до модуля лікарні.</field>
+    </record>
+
+    <record id="rule_patient_own_visits" model="ir.rule">
+        <field name="name">Пацієнт: лише власні відвідування</field>
+        <field name="model_id" ref="model_hospital_patient_visit"/>
+        <field name="domain_force">[('patient_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_hospital_patient'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_intern_own_visits" model="ir.rule">
+        <field name="name">Інтерн: власні відвідування</field>
+        <field name="model_id" ref="model_hospital_patient_visit"/>
+        <field name="domain_force">[('doctor_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_hospital_intern'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_doctor_own_and_intern_visits" model="ir.rule">
+        <field name="name">Лікар: власні відвідування та відвідування інтернів</field>
+        <field name="model_id" ref="model_hospital_patient_visit"/>
+        <field name="domain_force">['|', ('doctor_id.user_id', '=', user.id), ('doctor_id.mentor_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_hospital_doctor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_manager_all_visits" model="ir.rule">
+        <field name="name">Менеджер: усі відвідування</field>
+        <field name="model_id" ref="model_hospital_patient_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hospital_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_administrator_all_visits" model="ir.rule">
+        <field name="name">Адміністратор: усі операції з відвідуваннями</field>
+        <field name="model_id" ref="model_hospital_patient_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_hospital_administrator'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>
