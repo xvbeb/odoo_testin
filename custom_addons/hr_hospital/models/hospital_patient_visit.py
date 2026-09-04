@@ -92,11 +92,3 @@ class HospitalPatientVisit(models.Model):
                     "архівувати завершений візит."
                 )
         return super().write(vals)
-
-    def unlink(self):
-        is_hospital_admin = self.env.user.has_group(
-            "hr_hospital.group_hospital_administrator"
-        )
-        if not is_hospital_admin and any(visit.state == "done" for visit in self):
-            raise UserError("Не можна видаляти завершені візити.")
-        return super().unlink()

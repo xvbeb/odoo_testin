@@ -1,15 +1,15 @@
 <odoo noupdate="1">
     <!-- Основні записи захворювань. -->
     <record id="hospital_disease_influenza" model="hospital.disease">
-        <field name="name">Грип</field>
-        <field name="description">Гостра вірусна респіраторна інфекція.</field>
+        <field name="name">Influenza</field>
+        <field name="description">Acute viral respiratory infection.</field>
     </record>
     <record id="hospital_disease_hypertension" model="hospital.disease">
-        <field name="name">Гіпертонія</field>
-        <field name="description">Стійке підвищення артеріального тиску.</field>
+        <field name="name">Hypertension</field>
+        <field name="description">Persistent elevation of arterial blood pressure.</field>
     </record>
     <record id="hospital_disease_diabetes" model="hospital.disease">
-        <field name="name">Цукровий діабет</field>
-        <field name="description">Порушення регуляції рівня глюкози.</field>
+        <field name="name">Diabetes mellitus</field>
+        <field name="description">Disorder of blood glucose regulation.</field>
     </record>
 </odoo>

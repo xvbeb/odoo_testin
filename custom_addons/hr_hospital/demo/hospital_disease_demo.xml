@@ -1,11 +1,11 @@
 <odoo>
     <!-- П'ять ієрархічних демо-захворювань. -->
     <record id="hospital_disease_respiratory" model="hospital.disease">
-        <field name="name">Захворювання дихальної системи</field>
-        <field name="description">Демонстраційна батьківська категорія.</field>
+        <field name="name">Respiratory system diseases</field>
+        <field name="description">Demonstration parent category.</field>
     </record>
     <record id="hospital_disease_viral_respiratory" model="hospital.disease">
-        <field name="name">Вірусні респіраторні інфекції</field>
+        <field name="name">Viral respiratory infections</field>
         <field name="parent_id" ref="hospital_disease_respiratory"/>
     </record>
     <record id="hospital_disease_covid" model="hospital.disease">
@@ -13,10 +13,10 @@
         <field name="parent_id" ref="hospital_disease_viral_respiratory"/>
     </record>
     <record id="hospital_disease_cardiovascular" model="hospital.disease">
-        <field name="name">Серцево-судинні захворювання</field>
+        <field name="name">Cardiovascular diseases</field>
     </record>
     <record id="hospital_disease_arrhythmia" model="hospital.disease">
-        <field name="name">Аритмія</field>
+        <field name="name">Arrhythmia</field>
         <field name="parent_id" ref="hospital_disease_cardiovascular"/>
     </record>
 </odoo>
