@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .module-description {
+            max-width: 960px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            color: #24313d;
+            line-height: 1.6;
+        }
+
+        .hero {
+            padding: 48px 32px;
+            text-align: center;
+            background: #f2f7fb;
+            border-radius: 12px;
+        }
+
+        .hero__icon {
+            width: 112px;
+            height: 112px;
+        }
+
+        .hero__title {
+            margin: 16px 0 8px;
+            color: #23527c;
+        }
+
+        .hero__subtitle {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .features {
+            padding: 36px 24px;
+        }
+
+        .section-title {
+            color: #23527c;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .feature-card {
+            padding: 18px;
+            border: 1px solid #d9e2ea;
+            border-radius: 8px;
+        }
+
+        .security {
+            padding: 32px;
+            background: #fafafa;
+            border-radius: 12px;
+        }
+
+        .module-footer {
+            padding: 32px;
+            text-align: center;
+            color: #667788;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 32px 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="module-description">
+        <section class="hero">
+            <img class="hero__icon" src="icon.png" alt="Hospital Management">
+            <h1 class="hero__title">Hospital Management</h1>
+            <p class="hero__subtitle">Doctors, patients, visits, diseases, and reports in one Odoo application.</p>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">Main features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Medical staff</h3>
+                    <p>Manage doctors, qualifications, mentors, interns, and assigned system users.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Patients and visits</h3>
+                    <p>Plan visits, track their status, record diagnoses, and preserve doctor history.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Disease classifier</h3>
+                    <p>Use a hierarchical disease tree with a convenient search panel and Ukrainian translations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Reports and analytics</h3>
+                    <p>Generate A4 doctor reports and filter visit analytics by doctors, patients, diseases, and dates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="security">
+            <h2 class="section-title">Role-based security</h2>
+            <p>Access levels are inherited from Patient through Intern, Doctor, and Manager to Administrator. Record rules limit visits according to the current user's role.</p>
+        </section>
+
+        <footer class="module-footer">
+            <p>Compatible with Odoo 19.0 · AGPL-3</p>
+        </footer>
+    </main>
+</body>
+</html>

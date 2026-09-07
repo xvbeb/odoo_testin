@@ -1,7 +1,7 @@
 {
     "name": "Hospital",
     "summary": "Hospital management and visit analytics",
-    "version": "19.0.6.2.1",
+    "version": "19.0.6.3.0",
     "category": "Human Resources",
     "author": "xvbeb",
     "license": "AGPL-3",
