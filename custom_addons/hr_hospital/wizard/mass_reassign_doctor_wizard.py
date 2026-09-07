@@ -3,7 +3,7 @@ from odoo.exceptions import UserError
 
 
 class MassReassignDoctorWizard(models.TransientModel):
-    """ Перевизначення персонального лікаря для обраних пацієнтів """
+    """Масово змінювати персонального лікаря для обраних пацієнтів."""
 
     _name = "mass.reassign.doctor.wizard"
     _description = "Масове перевизначення персонального лікаря"
@@ -21,6 +21,7 @@ class MassReassignDoctorWizard(models.TransientModel):
     )
 
     def action_reassign(self):
+        """Перепризначити лікаря та оновити історію вибраних пацієнтів."""
         self.ensure_one()
         if self.env.context.get("active_model") != "hospital.patient":
             raise UserError("Візард потрібно викликати зі списку пацієнтів.")

@@ -2,7 +2,7 @@ from odoo import api, fields, models
 
 
 class HospitalPatient(models.Model):
-    """ Взаїмовідносини пацієнта з лікарем та історія хвороб"""
+    """Зберігати дані пацієнтів, їхніх лікарів, хвороби та візити."""
 
     _name = "hospital.patient"
     _description = "Пацієнт"
@@ -50,6 +50,7 @@ class HospitalPatient(models.Model):
 
     @api.depends("visit_ids")
     def _compute_visit_count(self):
+        """Обчислити загальну кількість візитів кожного пацієнта."""
         for patient in self:
             patient.visit_count = len(patient.visit_ids)
 

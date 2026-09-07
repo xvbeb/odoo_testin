@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 
 class HospitalMedicInfo(models.AbstractModel):
-    """ Інформація про медичні дані, спільна для лікарів та пацієнтів """
+    """Надавати спільні медичні поля для лікарів і пацієнтів."""
 
     _name = "hospital.medic.info"
     _description = "Медична інформація"
@@ -30,6 +30,7 @@ class HospitalMedicInfo(models.AbstractModel):
 
     @api.depends("birth_date")
     def _compute_age(self):
+        """Обчислити повний вік запису за датою народження."""
         for record in self:
             today = fields.Date.context_today(record)
             record.age = (

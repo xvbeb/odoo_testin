@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class HospitalDoctor(models.Model):
-    """ Лікарі та їхня інформація """
+    """Зберігати профілі лікарів, їхню кваліфікацію та наставництво."""
 
     _name = "hospital.doctor"
     _description = "Лікар"
@@ -68,12 +68,14 @@ class HospitalDoctor(models.Model):
 
     @api.constrains("mentor_id")
     def _check_mentor_is_not_intern(self):
+        """Заборонити призначення лікаря-інтерна ментором."""
         for doctor in self:
             if doctor.mentor_id and doctor.mentor_id.is_intern:
                 raise ValidationError("Лікар-інтерн не може бути ментором.")
 
     @api.constrains("mentor_id")
     def _check_mentor_is_not_self(self):
+        """Заборонити лікарю бути власним ментором."""
         for doctor in self:
             if doctor.mentor_id == doctor:
                 raise ValidationError("Лікар не може бути власним ментором.")

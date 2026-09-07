@@ -5,6 +5,8 @@ from odoo.exceptions import ValidationError
 
 
 class DiseaseMonthReportWizard(models.TransientModel):
+    """Формувати список візитів за хворобами, лікарями та періодом."""
+
     _name = "disease.month.report.wizard"
     _description = "Звіт по захворюваннях за період"
 
@@ -35,11 +37,13 @@ class DiseaseMonthReportWizard(models.TransientModel):
 
     @api.constrains("date_from", "date_to")
     def _check_period(self):
+        """Перевірити, що кінець звітного періоду не передує початку."""
         for wizard in self:
             if wizard.date_to < wizard.date_from:
                 raise ValidationError("Дата «По» не може бути раніше дати «З».")
 
     def action_show_report(self):
+        """Відкрити згруповані за хворобами візити за критеріями звіту."""
         self.ensure_one()
         domain = [
             (

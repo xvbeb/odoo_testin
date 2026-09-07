@@ -55,6 +55,7 @@ class HospitalPatientVisit(models.Model):
 
     @api.depends("disease_id")
     def _compute_disease_visit_count(self):
+        """Обчислити кількість візитів із захворюванням поточного візиту."""
         for visit in self:
             visit.disease_visit_count = (
                 self.search_count([("disease_id", "=", visit.disease_id.id)])
@@ -74,6 +75,7 @@ class HospitalPatientVisit(models.Model):
 
     @api.depends("patient_id.name", "doctor_id.name", "scheduled_datetime")
     def _compute_display_name(self):
+        """Сформувати назву візиту з пацієнта, лікаря та дати прийому."""
         for visit in self:
             visit.display_name = (
                 f"{visit.patient_id.name or ''} - {visit.doctor_id.name or ''} "
@@ -81,6 +83,7 @@ class HospitalPatientVisit(models.Model):
             )
 
     def write(self, vals):
+        """Заборонити зміну ключових даних і архівацію завершених візитів."""
         protected_fields = {"scheduled_datetime", "actual_datetime", "doctor_id", "state"}
         for visit in self:
             if visit.state == "done" and (

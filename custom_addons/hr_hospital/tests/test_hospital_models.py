@@ -8,8 +8,11 @@ from odoo.tests.common import TransactionCase
 
 @tagged("post_install", "-at_install")
 class TestHospitalModels(TransactionCase):
+    """Перевіряти основну бізнес-логіку моделей лікарні."""
+
     @classmethod
     def setUpClass(cls):
+        """Створити спільні категорії, лікаря та пацієнта для тестів."""
         super().setUpClass()
         cls.intern_category = cls.env.ref(
             "hr_hospital.doctor_category_intern"

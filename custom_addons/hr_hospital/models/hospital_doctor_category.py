@@ -2,7 +2,7 @@ from odoo import fields, models
 
 
 class HospitalDoctorCategory(models.Model):
-    """ Кваліфікація лікаря """
+    """Зберігати категорії кваліфікації лікарів."""
 
     _name = "hospital.doctor.category"
     _description = "Кваліфікація лікаря"
@@ -24,4 +24,3 @@ class HospitalDoctorCategory(models.Model):
         "UNIQUE(name)",
         "Кваліфікація лікаря з такою назвою вже існує.",
     )
-

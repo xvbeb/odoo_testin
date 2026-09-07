@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class HospitalDisease(models.Model):
-    """ Ієрархія хвороб """
+    """Зберігати ієрархічний класифікатор захворювань."""
 
     _name = "hospital.disease"
     _description = "Хвороба"
@@ -35,11 +35,13 @@ class HospitalDisease(models.Model):
 
     @api.constrains("parent_id")
     def _check_parent_recursion(self):
+        """Заборонити циклічні зв'язки в ієрархії захворювань."""
         if self._has_cycle():
             raise ValidationError("Ієрархія хвороб не може містити цикли.")
 
     @api.depends("name", "parent_id.display_name")
     def _compute_display_name(self):
+        """Побудувати повну назву захворювання з ієрархічного шляху."""
         for disease in self:
             names = []
             current = disease

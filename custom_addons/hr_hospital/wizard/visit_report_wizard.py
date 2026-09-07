@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 
 
 class VisitReportWizard(models.TransientModel):
-    """ Звіт по візитах пацієнтів """
+    """Формувати список візитів за заданими користувачем критеріями."""
 
     _name = "visit.report.wizard"
     _description = "Звіт по візитах пацієнтів"
@@ -31,6 +31,7 @@ class VisitReportWizard(models.TransientModel):
 
     @api.model
     def default_get(self, fields_list):
+        """Заповнити лікарів або пацієнтів із записів, що викликали візард."""
         values = super().default_get(fields_list)
         active_model = self.env.context.get("active_model")
         active_ids = self.env.context.get("active_ids", [])
@@ -42,6 +43,7 @@ class VisitReportWizard(models.TransientModel):
 
     @api.constrains("date_from", "date_to")
     def _check_period(self):
+        """Перевірити правильність меж обраного періоду."""
         for wizard in self:
             if wizard.date_from and wizard.date_to and wizard.date_to < wizard.date_from:
                 raise ValidationError(
@@ -49,6 +51,7 @@ class VisitReportWizard(models.TransientModel):
                 )
 
     def action_show_visits(self):
+        """Відкрити візити, що відповідають параметрам звіту."""
         self.ensure_one()
         domain = []
         if self.doctor_ids:

@@ -2,7 +2,7 @@ from odoo import api, fields, models
 
 
 class HospitalDoctorHistory(models.Model):
-    """ Історія персональних лікарів """
+    """Зберігати історію призначення персональних лікарів пацієнтам."""
 
     _name = "hospital.doctor.history"
     _description = "Історія персональних лікарів"
@@ -30,6 +30,7 @@ class HospitalDoctorHistory(models.Model):
 
     @api.onchange("assignment_date", "change_date")
     def _onchange_dates(self):
+        """Попередити користувача про некоректну послідовність дат."""
         if (
             self.assignment_date
             and self.change_date
@@ -53,6 +54,7 @@ class HospitalDoctorHistory(models.Model):
         "assignment_date",
     )
     def _compute_display_name(self):
+        """Сформувати назву запису історії з пацієнта, лікаря та дати."""
         for history in self:
             patient = history.patient_id.name or ""
             doctor = history.doctor_id.name or ""
